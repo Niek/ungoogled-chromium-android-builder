@@ -9,9 +9,8 @@ RUN \
   sed -i "$(($(grep -n "\[multilib\]" /etc/pacman.conf | cut -f1 -d:) + 1))s/^#//g" /etc/pacman.conf && \
   pacman -Syq --noconfirm && \
   pacman -Sq --noconfirm --needed lib32-glibc multilib-devel gnu-free-fonts jdk8-openjdk base base-devel json-glib libva protobuf jsoncpp python python2 gperf wget rsync tar unzip curl gnupg maven yasm mesa npm ninja git clang lld gn llvm quilt && \
-  # disable for now
   pacman -Scc --noconfirm && \
-  wget "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh" && \
+  curl -s "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh" -o Miniconda3-latest-Linux-x86_64.sh && \
   echo "bfe34e1fa28d6d75a7ad05fd02fa5472275673d5f5621b77380898dee1be15d2 Miniconda3-latest-Linux-x86_64.sh" | sha256sum --check --status && \
   chmod +x Miniconda3-latest-Linux-x86_64.sh && \
   ./Miniconda3-latest-Linux-x86_64.sh -b -p ~/anaconda && rm -rf Miniconda3-latest-Linux-x86_64.sh && \
