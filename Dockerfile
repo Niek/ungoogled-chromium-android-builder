@@ -12,7 +12,8 @@ RUN \
   pacman -Scc --noconfirm && \
   curl -s "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh" -o Miniconda3-latest-Linux-x86_64.sh && \
   chmod +x Miniconda3-latest-Linux-x86_64.sh && \
-  ./Miniconda3-latest-Linux-x86_64.sh -b -p ~/anaconda && rm -rf Miniconda3-latest-Linux-x86_64.sh && \
+  ./Miniconda3-latest-Linux-x86_64.sh -b -p ~/anaconda && \
+  rm -rf Miniconda3-latest-Linux-x86_64.sh && \
   source ~/anaconda/bin/activate && \
   conda init && \
   conda create -y --name py2 python=2 && \
