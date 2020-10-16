@@ -22,6 +22,8 @@ RUN \
 
 # Build
 RUN \
+  source ~/.bashrc && \
+  conda activate py2 && \
   git clone https://git.droidware.info/wchen342/ungoogled-chromium-android.git && \
   cd ungoogled-chromium-android && \
   echo "use_egl=false" >> android_flags.gn && \
