@@ -31,3 +31,7 @@ RUN \
   mkdir ../keystore && \
   echo -e 'android_keystore_name=""\nandroid_keystore_password=""\nandroid_keystore_path="//../../keystore/keystore.jks"\ntrichrome_certdigest=""' > ../keystore/keystore.gn && \
   ./build.sh -a x86 -t chrome_modern_public_apk
+
+# Copy APKs
+RUN \
+  cp -R ungoogled-chromium-android/src/out/Default/apks /
