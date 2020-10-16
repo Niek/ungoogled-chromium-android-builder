@@ -6,12 +6,12 @@ on:
 
 jobs:
   main:
-    name: Build and push Docker image to GitHub Packages
+    name: Build Docker image
     runs-on: ubuntu-latest
     steps:
       - name: Checking out repo
         uses: actions/checkout@master
-      - name: free disk space
+      - name: Free some disk space
         run: |
           sudo swapoff -a
           sudo rm -f /swapfile
@@ -25,4 +25,10 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get -qq -y install buildah
       - name: Build the Docker image
-        run: buildah bud --format=docker --layers -f Dockerfile .
+        run: |
+          buildah bud --format=docker --layers -t ungoogled-chromium-android -f Dockerfile .
+          echo "apks=$(buildah mount ungoogled-chromium-android)/apks" >> $GITHUB_ENV
+      - uses: actions/upload-artifact@v2
+        with:
+          name: APKs
+          path: ${{ env.apks }}
