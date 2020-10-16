@@ -9,7 +9,7 @@ RUN \
   sed -i "$(($(grep -n "\[multilib\]" /etc/pacman.conf | cut -f1 -d:) + 1))s/^#//g" /etc/pacman.conf && \
   pacman -Syq --noconfirm && \
   pacman -Sq --noconfirm lib32-glibc multilib-devel gnu-free-fonts jdk8-openjdk base base-devel json-glib libva protobuf jsoncpp python python2 gperf wget rsync tar unzip curl gnupg maven yasm mesa npm ninja git clang lld llvm quilt && \
-  pacman -U https://archive.archlinux.org/packages/g/gn/gn-0.1731.5ed3c9cc-1-x86_64.pkg.tar.zst && \
+  pacman -U --noconfirm https://archive.archlinux.org/packages/g/gn/gn-0.1731.5ed3c9cc-1-x86_64.pkg.tar.zst && \
   pacman -Scc --noconfirm && \
   curl -s "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh" -o Miniconda3-latest-Linux-x86_64.sh && \
   chmod +x Miniconda3-latest-Linux-x86_64.sh && \
