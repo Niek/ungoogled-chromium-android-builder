@@ -32,8 +32,9 @@ RUN \
   echo "use_egl=false" >> android_flags.gn && \
   # Switch to default Android channel / FIXME: remove this, not necessary
   #sed -i "s/stable/default/g" android_flags.gn && \
-  # Keep cmdline-tools in the Chromium repo
+  # Keep cmdline-tools in the Chromium repo, remove mkdir command
   sed -i "s/^  rm -rf \"\$DIRECTORY\"/find \$DIRECTORY -mindepth 1 -maxdepth 1 -not -name cmdline-tools -exec rm -rf '{}' \\\;/" build.sh && \
+  sed -i "s/^mkdir \"\${DIRECTORY}\" \&\& /" build.sh && \
   mkdir ../keystore && \
   echo -e 'android_keystore_name=""\nandroid_keystore_password=""\nandroid_keystore_path="//../../keystore/keystore.jks"\ntrichrome_certdigest=""' > ../keystore/keystore.gn && \
   echo > ../keystore/keystore.jks && \
