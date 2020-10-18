@@ -30,8 +30,10 @@ RUN \
   git clone https://git.droidware.info/wchen342/ungoogled-chromium-android.git && \
   cd ungoogled-chromium-android && \
   echo "use_egl=false" >> android_flags.gn && \
-  # Switch to default Android channel
-  sed -i "s/stable/default/g" android_flags.gn && \
+  # Switch to default Android channel / FIXME: remove this, not necessary
+  #sed -i "s/stable/default/g" android_flags.gn && \
+  # Keep cmdline-tools in the Chromium repo
+  sed -i "s/^  rm -rf \"\$DIRECTORY\"/find \$DIRECTORY -mindepth 1 -maxdepth 1 -not -name cmdline-tools -exec rm -rf '{}' \\\;/" build.sh && \
   mkdir ../keystore && \
   echo -e 'android_keystore_name=""\nandroid_keystore_password=""\nandroid_keystore_path="//../../keystore/keystore.jks"\ntrichrome_certdigest=""' > ../keystore/keystore.gn && \
   echo > ../keystore/keystore.jks && \
