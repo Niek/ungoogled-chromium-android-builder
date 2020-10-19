@@ -38,7 +38,7 @@ RUN \
   echo > ../keystore/keystore.gn && \
   #echo -e 'android_keystore_name=""\nandroid_keystore_password=""\nandroid_keystore_path="//../../keystore/keystore.jks"\ntrichrome_certdigest=""' > ../keystore/keystore.gn && \
   #echo > ../keystore/keystore.jks && \
-  ./build.sh -a x86 -t chrome_public_apk && \
+  ./build.sh -a x86 -t chrome_modern_public_apk && \
   # Copy built APK files
   cp -R src/out/Default /out && \
   # Delete build dir
