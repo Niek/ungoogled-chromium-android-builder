@@ -4,7 +4,7 @@
 
 FROM archlinux:latest
 
-ENV PACKAGES="lib32-glibc multilib-devel gnu-free-fonts jdk-openjdk base base-devel json-glib libva protobuf jsoncpp python python2 gperf wget rsync tar unzip curl gnupg maven yasm mesa npm ninja git clang lld llvm quilt"
+ENV PACKAGES="lib32-glibc multilib-devel gnu-free-fonts jdk11-openjdk jdk8-openjdk base base-devel json-glib libva protobuf jsoncpp python python2 gperf wget rsync tar unzip curl gnupg maven yasm mesa npm ninja git clang lld llvm quilt"
 
 # Install deps
 RUN \
@@ -31,8 +31,6 @@ RUN \
   # Keep cmdline-tools in the Chromium repo, remove mkdir command
   sed -i "s/^  rm -rf \"\$DIRECTORY\"/find \$DIRECTORY -mindepth 1 -maxdepth 1 -not -name cmdline-tools -exec rm -rf '{}' \\\;/" build.sh && \
   sed -i "s/^mkdir \"\${DIRECTORY}\" \&\& //" build.sh && \
-  # Make JRE link version-independent
-  sed -i "s/java-8-openjdk/default/" build.sh && \
   mkdir ../keystore && \
   echo -e 'android_keystore_name=""\nandroid_keystore_password=""\nandroid_keystore_path="//../../keystore/keystore.jks"\ntrichrome_certdigest=""' > ../keystore/keystore.gn && \
   echo > ../keystore/keystore.jks && \
