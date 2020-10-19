@@ -23,8 +23,6 @@ RUN \
   conda create -y --name py2 python=2 && \
   conda activate py2 && \
   pip install six && \
-  source ~/.bashrc && \
-  conda activate py2 && \
   git clone https://git.droidware.info/wchen342/ungoogled-chromium-android.git && \
   cd ungoogled-chromium-android && \
   echo "use_egl=false" >> android_flags.gn && \
@@ -33,6 +31,8 @@ RUN \
   # Keep cmdline-tools in the Chromium repo, remove mkdir command
   sed -i "s/^  rm -rf \"\$DIRECTORY\"/find \$DIRECTORY -mindepth 1 -maxdepth 1 -not -name cmdline-tools -exec rm -rf '{}' \\\;/" build.sh && \
   sed -i "s/^mkdir \"\${DIRECTORY}\" \&\& //" build.sh && \
+  # Make JRE link version-independent
+  sed -i "s/java-8-openjdk/default/" build.sh && \
   mkdir ../keystore && \
   echo -e 'android_keystore_name=""\nandroid_keystore_password=""\nandroid_keystore_path="//../../keystore/keystore.jks"\ntrichrome_certdigest=""' > ../keystore/keystore.gn && \
   echo > ../keystore/keystore.jks && \
