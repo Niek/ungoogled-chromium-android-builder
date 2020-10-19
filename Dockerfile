@@ -25,7 +25,11 @@ RUN \
   pip install six && \
   git clone https://git.droidware.info/wchen342/ungoogled-chromium-android.git && \
   cd ungoogled-chromium-android && \
-  echo "use_egl=false" >> android_flags.gn && \
+  # Skip trichrome APK
+  echo > trichrome_generate_apk.sh && \
+  # Speed up compiling
+  #echo "use_egl=false" >> android_flags.gn && \
+  echo -e "use_errorprone_java_compiler=false\ntreat_warnings_as_errors=false\ndisable_android_lint=true\nenable_nacl=false\nenable_swiftshader=true" >> android_flags.gn && \
   # Switch to default Android channel / FIXME: remove this, not necessary
   #sed -i "s/stable/default/g" android_flags.gn && \
   # Keep cmdline-tools in the Chromium repo, remove mkdir command
