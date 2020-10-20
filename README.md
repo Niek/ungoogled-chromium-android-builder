@@ -2,8 +2,7 @@
 
 This repo hosts a Dockerfile that builds the latest ungoogled-chromium APK for Android x86 devices without EGL.
 
-To pull, use:
+To get the latest APK, run:
 ```bash
-docker pull niekvdmaas/ungoogled-chromium-android-builder
-docker cp ungoogled-chromium-android-builder:/apks/* .
+docker run -v $PWD:/mnt --rm niekvdmaas/ungoogled-chromium-android-builder cp -R /out /mnt
 ```
