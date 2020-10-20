@@ -28,16 +28,12 @@ RUN \
   # Skip trichrome APK
   echo > trichrome_generate_apk.sh && \
   # Speed up compiling
-  #echo "use_egl=false" >> android_flags.gn && \
-  echo -e "use_errorprone_java_compiler=false\ntreat_warnings_as_errors=false\ndisable_android_lint=true\nenable_nacl=false\nenable_swiftshader=true" >> android_flags.gn && \
-  # Switch to default Android channel / FIXME: remove this, not necessary
+  echo -e "use_egl=false\nuse_errorprone_java_compiler=false\ntreat_warnings_as_errors=false\ndisable_android_lint=true\nenable_nacl=false\nenable_swiftshader=true" >> android_flags.gn && \
   # Keep cmdline-tools in the Chromium repo, remove mkdir command
   sed -i "s/^  rm -rf \"\$DIRECTORY\"/find \$DIRECTORY -mindepth 1 -maxdepth 1 -not -name cmdline-tools -exec rm -rf '{}' \\\;/" build.sh && \
   sed -i "s/^mkdir \"\${DIRECTORY}\" \&\& //" build.sh && \
-  mkdir ../keystore && \
-  echo > ../keystore/keystore.gn && \
-  #echo -e 'android_keystore_name=""\nandroid_keystore_password=""\nandroid_keystore_path="//../../keystore/keystore.jks"\ntrichrome_certdigest=""' > ../keystore/keystore.gn && \
-  #echo > ../keystore/keystore.jks && \
+  mkdir ../keystore && echo > ../keystore/keystore.gn && \
+  # Build Chromium
   ./build.sh -a x86 -t chrome_modern_public_apk && \
   # Copy built APK files
   cp -R src/out/Default /out && \
