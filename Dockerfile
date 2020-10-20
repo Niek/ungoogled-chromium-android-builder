@@ -44,5 +44,5 @@ RUN \
   # Delete build dir
   rm -rf ../ungoogled-chromium-android && \
   # Remove all packages except base
-  pacman -Rsu --noconfirm $PACKAGES && \
+  #pacman -Rsu --noconfirm $PACKAGES && \
   pacman -Scc --noconfirm 
