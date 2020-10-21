@@ -30,7 +30,7 @@ RUN \
   git clone https://git.droidware.info/wchen342/ungoogled-chromium-android.git && \
   cd ungoogled-chromium-android && \
   # Add patch to disable EGL
-  echo "Other/disable-gl.patch" > patches/series && \
+  echo "Other/disable-gl.patch" >> patches/series && \
   cp /tmp/disable-gl.patch patches/Other/ && \
   # Skip trichrome APK
   echo > trichrome_generate_apk.sh && \
