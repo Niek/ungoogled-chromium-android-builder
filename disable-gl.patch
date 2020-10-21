@@ -24,8 +24,8 @@ index bb9d06047a..35019bb220 100644
    // Enable DOM Distiller backend.
    SetCommandLineSwitch(switches::kEnableDomDistiller);
 +
-+  // Disable GL on Android
-+  SetCommandLineSwitchASCII(switches::kUseGL, gl::kGLImplementationSwiftShaderName);
++  // Use EGL on Android
++  SetCommandLineSwitchASCII(switches::kUseGL, gl::kGLImplementationEGLName);
  }
 -- 
 2.25.1
