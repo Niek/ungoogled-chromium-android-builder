@@ -25,7 +25,7 @@ index bb9d06047a..35019bb220 100644
    SetCommandLineSwitch(switches::kEnableDomDistiller);
 +
 +  // Disable GL on Android
-+  SetCommandLineSwitchASCII(switches::kUseGL, gl::kGLImplementationDisabledName);
++  SetCommandLineSwitchASCII(switches::kUseGL, gl::kGLImplementationSwiftShaderName);
  }
 -- 
 2.25.1
