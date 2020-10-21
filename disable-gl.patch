@@ -1,0 +1,32 @@
+From 29e1503a4a99b7ea54fdc6e8e3a99a25d327f627 Mon Sep 17 00:00:00 2001
+From: Niek <mail@niekvandermaas.nl>
+Date: Wed, 21 Oct 2020 08:47:39 +0000
+Subject: Disable GL
+
+---
+ chrome/browser/android/chrome_startup_flags.cc | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/chrome/browser/android/chrome_startup_flags.cc b/chrome/browser/android/chrome_startup_flags.cc
+index bb9d06047a..35019bb220 100644
+--- a/chrome/browser/android/chrome_startup_flags.cc
++++ b/chrome/browser/android/chrome_startup_flags.cc
+@@ -16,6 +16,7 @@
+ #include "components/browser_sync/browser_sync_switches.h"
+ #include "components/dom_distiller/core/dom_distiller_switches.h"
+ #include "media/base/media_switches.h"
++#include "ui/gl/gl_switches.h"
+
+ namespace {
+
+@@ -41,4 +42,7 @@ void SetChromeSpecificCommandLineFlags() {
+
+   // Enable DOM Distiller backend.
+   SetCommandLineSwitch(switches::kEnableDomDistiller);
++
++  // Disable GL on Android
++  SetCommandLineSwitchASCII(switches::kUseGL, gl::kGLImplementationDisabledName);
+ }
+-- 
+2.25.1
+

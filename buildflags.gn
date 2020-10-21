@@ -1,0 +1,6 @@
+use_egl=false
+use_errorprone_java_compiler=false
+treat_warnings_as_errors=false
+disable_android_lint=true
+enable_nacl=false
+enable_swiftshader=true
