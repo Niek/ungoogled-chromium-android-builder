@@ -24,8 +24,8 @@ index bb9d06047a..35019bb220 100644
    // Enable DOM Distiller backend.
    SetCommandLineSwitch(switches::kEnableDomDistiller);
 +
-+  // Disable GPU on Android
-+  SetCommandLineSwitch(::switches::kDisableGpu);
++  // Disable GPU compositing on Android
++  SetCommandLineSwitch(::switches::kDisableGpuCompositing);
  }
 -- 
 2.25.1
