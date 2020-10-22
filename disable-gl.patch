@@ -15,7 +15,7 @@ index bb9d06047a..35019bb220 100644
  #include "components/browser_sync/browser_sync_switches.h"
  #include "components/dom_distiller/core/dom_distiller_switches.h"
  #include "media/base/media_switches.h"
-+#include "ui/gl/gl_switches.h"
++#include "content/public/common/content_switches.h"
 
  namespace {
 
