@@ -28,7 +28,7 @@ jobs:
         run: |
           buildah bud --format=docker --layers -t ungoogled-chromium-android -f Dockerfile .
           echo "apks=$(buildah mount ungoogled-chromium-android)/apks" >> $GITHUB_ENV
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: APKs
           path: ${{ env.apks }}
